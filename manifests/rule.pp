@@ -79,7 +79,7 @@
 # rotate          - The Integer number of rotated log files to keep on disk
 #                   (optional).
 # rotate_every    - How often the log files should be rotated as a String.
-#                   Valid values are 'day', 'week', 'month' and 'year'
+#                   Valid values are 'hour','day', 'week', 'month' and 'year'
 #                   (optional).
 # size            - The String size a log file has to reach before it will be
 #                   rotated (optional).  The default units are bytes, append k,
@@ -297,11 +297,12 @@ define logrotate::rule(
 
   case $rotate_every {
     'undef': {}
+    'hour': { $_rotate_every = 'hourly' }
     'day': { $_rotate_every = 'daily' }
     'week': { $_rotate_every = 'weekly' }
     'month': { $_rotate_every = 'monthly' }
     'year': { $_rotate_every = 'yearly' }
-    'daily', 'weekly','monthly','yearly': { $_rotate_every = $rotate_every }
+    'hourly', 'daily', 'weekly','monthly','yearly': { $_rotate_every = $rotate_every }
     default: {
       fail("Logrotate::Rule[${name}]: invalid rotate_every value")
     }
