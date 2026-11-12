@@ -15,11 +15,11 @@ class logrotate::params {
 
   ### Application related parameters
   $package = 'logrotate'
-  $config_dir = '/etc/logrotate.d',
+  $config_dir = '/etc/logrotate.d'
   $config_file = '/etc/logrotate.conf'
   $config_file_mode = '0644'
   $config_file_owner = 'root'
-  $config_file_group = 'root',
+  $config_file_group = 'root'
 
   # General Settings
   $my_class = ''
