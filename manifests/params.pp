@@ -1,7 +1,6 @@
 # Class: logrotate::params
 #
 # This class defines default parameters used by the main module class logrotate
-# Operating Systems differences in names and paths are addressed here
 #
 # == Variables
 #
@@ -15,30 +14,12 @@
 class logrotate::params {
 
   ### Application related parameters
-
-  $package = $::operatingsystem ? {
-    default => 'logrotate',
-  }
-
-  $config_dir = $::operatingsystem ? {
-    default => '/etc/logrotate.d',
-  }
-
-  $config_file = $::operatingsystem ? {
-    default => '/etc/logrotate.conf',
-  }
-
-  $config_file_mode = $::operatingsystem ? {
-    default => '0644',
-  }
-
-  $config_file_owner = $::operatingsystem ? {
-    default => 'root',
-  }
-
-  $config_file_group = $::operatingsystem ? {
-    default => 'root',
-  }
+  $package = 'logrotate'
+  $config_dir = '/etc/logrotate.d'
+  $config_file = '/etc/logrotate.conf'
+  $config_file_mode = '0644'
+  $config_file_owner = 'root'
+  $config_file_group = 'root'
 
   # General Settings
   $my_class = ''
@@ -52,5 +33,4 @@ class logrotate::params {
   $audit_only = false
   $noops = undef
   $files = {}
-
 }
